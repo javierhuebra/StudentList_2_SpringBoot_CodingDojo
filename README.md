@@ -1,4 +1,4 @@
-# APP monolítica Lista de estudiantes - Coding Dojo Spring Data II
+# APP monolítica Lista de estudiantes II - Coding Dojo Spring Data II
 <p align="center">
 <img src="https://cutecdn.codingdojo.com/svg_images/logos/coding_dojo_blue.svg" width="500">
 </p>
