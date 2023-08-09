@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista de estudiantes II</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        h3 {
+            color: green;
+            margin-top: 20px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<h1>Lista de estudiantes II</h1>
+<a href="/dorms/new">
+    <button>Crear dormitorio</button>
+</a>
+<a href="/alumns/new">
+    <button>Cargar Alumno</button>
+</a>
+<h3>Dormitorios Existentes:</h3>
+<p th:each="dormitorio : ${dormitorios}">
+    <a th:href="@{/dorms/{id}(id=${dormitorio.id})}">
+        <span th:text="${dormitorio.name}"></span>
+    </a>
+</p>
+</body>
+</html>

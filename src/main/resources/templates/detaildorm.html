@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #9e129e;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        a {
+            color: orange;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid white;
+        }
+
+        th {
+            background-color: orange;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1 th:text="${dormitorio.name}"></h1>
+<a href="/">Volver al index</a>
+<form th:action="@{/alumns/asignar/{id}(id=${dormitorio.id})}" method="POST" th:object="${alumnos}">
+    <label>
+        Alumnos:
+        <select th:name="alumno">
+            <option th:each="alumno : ${alumnos}" th:value="${alumno.id}" th:text="${alumno.firstName}"></option>
+        </select>
+    </label>
+    <input type="submit" value="Cargar Ninja">
+</form>
+
+<h3>Alumnos en este dormitorio:</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Edad</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="alumno : ${alumnosPorDorm}">
+        <td th:text="${alumno.firstName}"></td>
+        <td th:text="${alumno.lastName}"></td>
+        <td th:text="${alumno.age}"></td>
+        <td>
+            <form th:action="@{/alumns/desvincular}" method="POST" th:object="${alumno}">
+                <input type="hidden" name="alumnoId" th:value="${alumno.id}" />
+                <input type="hidden" name="dormitorioId" th:value="${alumno.dorm.id}" />
+                <input type="submit" value="Eliminar">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
